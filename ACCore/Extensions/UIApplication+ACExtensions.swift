@@ -9,8 +9,12 @@ import UIKit
 
 extension UIApplication {
     
+    var firstKeyWindow: UIWindow? {
+        return UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+    }
+    
     // Based on: https://stackoverflow.com/a/50656239/1792699
-    class func topMostViewController(base: UIViewController? = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController) -> UIViewController? {
+    class func topMostViewController(base: UIViewController? = UIApplication.shared.firstKeyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
             return topMostViewController(base: nav.visibleViewController)
         }
