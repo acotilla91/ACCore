@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ACPaginationViewDelegate: class {
+protocol ACPaginationViewDelegate: AnyObject {
     func paginationView(_ paginationView: ACPaginationView, didSelect index: Int)
 }
 
